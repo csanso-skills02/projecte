@@ -16,7 +16,14 @@
         </option>
       </select>
 
-      <input type="text" v-model="form.search" />
+      <select v-model="form.tipu_id">
+        <option value=""></option>
+        <option v-for="tipu in tipus" :key="tipu.id" :value="tipu.id">
+          {{ tipu.nom }}
+        </option>
+      </select>
+
+      <input type="text" v-model="form.search" placeholder="Cercador" />
     </div>
 
     <div class="espais">
@@ -52,13 +59,14 @@ export default {
     Translation,
     CustomLink,
   },
-  props: ["espais", "query"],
+  props: ["espais", "query", "tipus"],
   layout: Layout,
   data() {
     return {
       form: {
         search: this.query.search,
         municipi_id: this.query.municipi_id,
+        tipu_id: this.query.tipu_id,
       },
     };
   },

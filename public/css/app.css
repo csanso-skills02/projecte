@@ -235,7 +235,7 @@ input[data-v-004fa39d] {
   border: 1px solid var(--colors-1);
   box-shadow: 0 0 2px 1px var(--colors-3);
 }
-.page[data-v-6f5dd44a] {
+.details[data-v-6f5dd44a] {
   width: 100%;
   padding: 25px;
   display: flex;
@@ -269,4 +269,8 @@ img[data-v-6f5dd44a] {
 .desc[data-v-6f5dd44a] {
   display: block;
   margin-top: 45px;
+}
+.comments article[data-v-6f5dd44a] {
+  display: flex;
+  flex-direction: column;
 }

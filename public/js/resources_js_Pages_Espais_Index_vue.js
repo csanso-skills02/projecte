@@ -59,6 +59,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -68,13 +75,14 @@ __webpack_require__.r(__webpack_exports__);
     Translation: _Shared_Translation_vue__WEBPACK_IMPORTED_MODULE_0__.default,
     CustomLink: _Shared_CustomLink_vue__WEBPACK_IMPORTED_MODULE_1__.default
   },
-  props: ["espais", "query"],
+  props: ["espais", "query", "tipus"],
   layout: _Shared_Layout__WEBPACK_IMPORTED_MODULE_2__.default,
   data: function data() {
     return {
       form: {
         search: this.query.search,
-        municipi_id: this.query.municipi_id
+        municipi_id: this.query.municipi_id,
+        tipu_id: this.query.tipu_id
       }
     };
   },
@@ -785,6 +793,49 @@ var render = function() {
         2
       ),
       _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.form.tipu_id,
+              expression: "form.tipu_id"
+            }
+          ],
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.$set(
+                _vm.form,
+                "tipu_id",
+                $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+              )
+            }
+          }
+        },
+        [
+          _c("option", { attrs: { value: "" } }),
+          _vm._v(" "),
+          _vm._l(_vm.tipus, function(tipu) {
+            return _c(
+              "option",
+              { key: tipu.id, domProps: { value: tipu.id } },
+              [_vm._v("\n        " + _vm._s(tipu.nom) + "\n      ")]
+            )
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
       _c("input", {
         directives: [
           {
@@ -794,7 +845,7 @@ var render = function() {
             expression: "form.search"
           }
         ],
-        attrs: { type: "text" },
+        attrs: { type: "text", placeholder: "Cercador" },
         domProps: { value: _vm.form.search },
         on: {
           input: function($event) {

@@ -39,4 +39,9 @@ class Espai extends Model
     {
         return $this->hasMany(EspaiImatge::class);
     }
+
+    public function comentaris()
+    {
+        return $this->hasMany(Comentari::class);
+    }
 }

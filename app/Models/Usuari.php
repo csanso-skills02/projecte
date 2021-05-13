@@ -34,11 +34,18 @@ class Usuari extends Authenticatable
         // 'email_verified_at' => 'datetime',
     ];
 
-    public function getRememberTokenName(){
+    public function getRememberTokenName()
+    {
         return 'recorda_token';
     }
 
-    public function getAuthPassword(){
+    public function getAuthPassword()
+    {
         return $this->contrasenya;
+    }
+
+    public function comentaris()
+    {
+        return $this->hasMany(Comentari::class);
     }
 }

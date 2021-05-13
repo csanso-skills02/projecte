@@ -26,12 +26,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   layout: _Shared_Layout__WEBPACK_IMPORTED_MODULE_0__.default,
   computed: {
     espai: function espai() {
       return this.$page.props.item || {};
+    },
+    comentaris: function comentaris() {
+      return this.espai.comentaris;
     },
     nom: function nom() {
       return this.$page.props.item.nom || "";
@@ -683,19 +695,40 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("article", { staticClass: "page" }, [
-    _c("div", { staticClass: "left" }, [
-      _c("img", { attrs: { src: _vm.imatge, alt: "" } })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "right" }, [
-      _c("h1", { staticClass: "page-title" }, [_vm._v(_vm._s(_vm.nom))]),
-      _vm._v(" "),
-      _c("p", { staticClass: "info" }, [
-        _vm._v(_vm._s(_vm.tipu) + " en " + _vm._s(_vm.municipi))
+    _c("div", { staticClass: "details" }, [
+      _c("div", { staticClass: "left" }, [
+        _c("img", { attrs: { src: _vm.imatge, alt: "" } })
       ]),
       _vm._v(" "),
-      _c("p", { staticClass: "desc" }, [_vm._v(_vm._s(_vm.desc))])
-    ])
+      _c("div", { staticClass: "right" }, [
+        _c("h1", { staticClass: "page-title" }, [_vm._v(_vm._s(_vm.nom))]),
+        _vm._v(" "),
+        _c("p", { staticClass: "info" }, [
+          _vm._v(_vm._s(_vm.tipu) + " en " + _vm._s(_vm.municipi))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "desc" }, [_vm._v(_vm._s(_vm.desc))])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "comments" },
+      _vm._l(_vm.comentaris, function(comentari) {
+        return _c("article", { key: comentari.id }, [
+          _c("h3", [
+            _vm._v(
+              _vm._s(comentari.usuari.nom) +
+                " " +
+                _vm._s(comentari.usuari.llinatges)
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(comentari.text))])
+        ])
+      }),
+      0
+    )
   ])
 }
 var staticRenderFns = []
