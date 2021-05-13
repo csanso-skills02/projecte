@@ -12,14 +12,14 @@
           <custom-link :href="$route('espais.index')">
             <translation value="espais" />
           </custom-link>
-          <custom-link :href="$route('lang.change', { abbr: 'eng' })">
-            English
-          </custom-link>
           <custom-link :href="$route('lang.change', { abbr: 'cat' })">
             Catala
           </custom-link>
           <custom-link :href="$route('lang.change', { abbr: 'esp' })">
             Espanyol
+          </custom-link>
+          <custom-link :href="$route('lang.change', { abbr: 'eng' })">
+            English
           </custom-link>
         </nav>
       </div>

@@ -11,7 +11,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Shared_Layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Shared/Layout */ "./resources/js/Shared/Layout.vue");
+/* harmony import */ var _Shared_Translation_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Shared/Translation.vue */ "./resources/js/Shared/Translation.vue");
+/* harmony import */ var _Shared_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Shared/Layout */ "./resources/js/Shared/Layout.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -36,8 +52,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  layout: _Shared_Layout__WEBPACK_IMPORTED_MODULE_0__.default,
+  components: {
+    Translation: _Shared_Translation_vue__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  layout: _Shared_Layout__WEBPACK_IMPORTED_MODULE_1__.default,
+  data: function data() {
+    return {
+      form: {
+        comment: ""
+      }
+    };
+  },
   computed: {
     espai: function espai() {
       return this.$page.props.item || {};
@@ -65,6 +92,14 @@ __webpack_require__.r(__webpack_exports__);
     },
     imatge: function imatge() {
       return this.espai.imatges[0].imatge;
+    }
+  },
+  methods: {
+    submit: function submit() {
+      this.$inertia.post(this.$route("comentari.afegir"), {
+        text: this.form.comment,
+        espai_id: this.espai.id
+      });
     }
   }
 });
@@ -703,32 +738,90 @@ var render = function() {
       _c("div", { staticClass: "right" }, [
         _c("h1", { staticClass: "page-title" }, [_vm._v(_vm._s(_vm.nom))]),
         _vm._v(" "),
-        _c("p", { staticClass: "info" }, [
-          _vm._v(_vm._s(_vm.tipu) + " en " + _vm._s(_vm.municipi))
-        ]),
+        _c(
+          "p",
+          { staticClass: "info" },
+          [
+            _vm._v(_vm._s(_vm.tipu) + " "),
+            _c("translation", { attrs: { value: "en" } }),
+            _vm._v(" " + _vm._s(_vm.municipi))
+          ],
+          1
+        ),
         _vm._v(" "),
         _c("p", { staticClass: "desc" }, [_vm._v(_vm._s(_vm.desc))])
       ])
     ]),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "comments" },
-      _vm._l(_vm.comentaris, function(comentari) {
-        return _c("article", { key: comentari.id }, [
-          _c("h3", [
-            _vm._v(
-              _vm._s(comentari.usuari.nom) +
-                " " +
-                _vm._s(comentari.usuari.llinatges)
+    _c("div", { staticClass: "comments-box" }, [
+      _c("h3", [_c("translation", { attrs: { value: "comentaris" } })], 1),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "comments-list" },
+        _vm._l(_vm.comentaris, function(comentari) {
+          return _c("article", { key: comentari.id }, [
+            _c("h3", [
+              _vm._v(
+                "\n          " +
+                  _vm._s(comentari.usuari.nom) +
+                  " " +
+                  _vm._s(comentari.usuari.llinatges) +
+                  "\n          "
+              ),
+              _c("small", [
+                _vm._v(_vm._s(comentari.data) + " " + _vm._s(comentari.hora))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(comentari.text))])
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _vm.$page.props.user
+        ? _c("div", { staticClass: "afegir-comentari" }, [
+            _c("h3", [_vm._v("Afegir comentari")]),
+            _vm._v(" "),
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.submit($event)
+                  }
+                }
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.comment,
+                      expression: "form.comment"
+                    }
+                  ],
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.form.comment },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "comment", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("button", { attrs: { type: "submit" } }, [_vm._v("Afegir")])
+              ]
             )
-          ]),
-          _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(comentari.text))])
-        ])
-      }),
-      0
-    )
+          ])
+        : _vm._e()
+    ])
   ])
 }
 var staticRenderFns = []
@@ -851,12 +944,6 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "custom-link",
-                { attrs: { href: _vm.$route("lang.change", { abbr: "eng" }) } },
-                [_vm._v("\n          English\n        ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "custom-link",
                 { attrs: { href: _vm.$route("lang.change", { abbr: "cat" }) } },
                 [_vm._v("\n          Catala\n        ")]
               ),
@@ -865,6 +952,12 @@ var render = function() {
                 "custom-link",
                 { attrs: { href: _vm.$route("lang.change", { abbr: "esp" }) } },
                 [_vm._v("\n          Espanyol\n        ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "custom-link",
+                { attrs: { href: _vm.$route("lang.change", { abbr: "eng" }) } },
+                [_vm._v("\n          English\n        ")]
               )
             ],
             1
@@ -953,7 +1046,7 @@ render._withStripped = true
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"inici":"Inici","espais":"Espais","ver":"Veure","email":"Correu electronic","contrasenya":"Contrasenya","iniciar-sessio":"Iniciar Sessió","tancar-sessio":"Tancar Sessió"}');
+module.exports = JSON.parse('{"inici":"Inici","espais":"Espais","comentaris":"Comentaris","en":"en","tipus":"Tipus","ver":"Veure","email":"Correu electronic","contrasenya":"Contrasenya","iniciar-sessio":"Iniciar Sessió","tancar-sessio":"Tancar Sessió"}');
 
 /***/ }),
 
@@ -964,7 +1057,7 @@ module.exports = JSON.parse('{"inici":"Inici","espais":"Espais","ver":"Veure","e
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"inici":"Home","espais":"Spaces","ver":"View","email":"Email","contrasenya":"Password","iniciar-sessio":"Login","tancar-sessio":"Logout"}');
+module.exports = JSON.parse('{"inici":"Home","espais":"Spaces","ver":"View","comentaris":"Comments","email":"Email","en":"in","tipus":"Type","contrasenya":"Password","iniciar-sessio":"Login","tancar-sessio":"Logout"}');
 
 /***/ }),
 
@@ -975,7 +1068,7 @@ module.exports = JSON.parse('{"inici":"Home","espais":"Spaces","ver":"View","ema
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"inici":"Inicio","espais":"Espacios","ver":"Ver","email":"Correo electronico","contrasenya":"Contraseña","iniciar-sessio":"Iniciar Sessión","tancar-sessio":"Cerrar Sessión"}');
+module.exports = JSON.parse('{"inici":"Inicio","espais":"Espacios","ver":"Ver","en":"en","tipus":"Tipo","comentaris":"Comentarios","email":"Correo electronico","contrasenya":"Contraseña","iniciar-sessio":"Iniciar Sessión","tancar-sessio":"Cerrar Sessión"}');
 
 /***/ })
 

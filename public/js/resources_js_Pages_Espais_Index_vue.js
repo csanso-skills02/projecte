@@ -66,6 +66,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -872,7 +875,19 @@ var render = function() {
               _c("div", { staticClass: "group" }, [
                 _c("h2", { staticClass: "title" }, [_vm._v(_vm._s(espai.nom))]),
                 _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(espai.municipi.nom))])
+                _c(
+                  "p",
+                  [
+                    _vm._v("\n            " + _vm._s(espai.tipu.nom) + " "),
+                    _c("translation", { attrs: { value: "en" } }),
+                    _vm._v(
+                      "\n            " +
+                        _vm._s(espai.municipi.nom) +
+                        "\n          "
+                    )
+                  ],
+                  1
+                )
               ]),
               _vm._v(" "),
               _c("p", [_vm._v(_vm._s(espai.desc))]),
@@ -1019,12 +1034,6 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "custom-link",
-                { attrs: { href: _vm.$route("lang.change", { abbr: "eng" }) } },
-                [_vm._v("\n          English\n        ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "custom-link",
                 { attrs: { href: _vm.$route("lang.change", { abbr: "cat" }) } },
                 [_vm._v("\n          Catala\n        ")]
               ),
@@ -1033,6 +1042,12 @@ var render = function() {
                 "custom-link",
                 { attrs: { href: _vm.$route("lang.change", { abbr: "esp" }) } },
                 [_vm._v("\n          Espanyol\n        ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "custom-link",
+                { attrs: { href: _vm.$route("lang.change", { abbr: "eng" }) } },
+                [_vm._v("\n          English\n        ")]
               )
             ],
             1
@@ -1121,7 +1136,7 @@ render._withStripped = true
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"inici":"Inici","espais":"Espais","ver":"Veure","email":"Correu electronic","contrasenya":"Contrasenya","iniciar-sessio":"Iniciar Sessió","tancar-sessio":"Tancar Sessió"}');
+module.exports = JSON.parse('{"inici":"Inici","espais":"Espais","comentaris":"Comentaris","en":"en","tipus":"Tipus","ver":"Veure","email":"Correu electronic","contrasenya":"Contrasenya","iniciar-sessio":"Iniciar Sessió","tancar-sessio":"Tancar Sessió"}');
 
 /***/ }),
 
@@ -1132,7 +1147,7 @@ module.exports = JSON.parse('{"inici":"Inici","espais":"Espais","ver":"Veure","e
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"inici":"Home","espais":"Spaces","ver":"View","email":"Email","contrasenya":"Password","iniciar-sessio":"Login","tancar-sessio":"Logout"}');
+module.exports = JSON.parse('{"inici":"Home","espais":"Spaces","ver":"View","comentaris":"Comments","email":"Email","en":"in","tipus":"Type","contrasenya":"Password","iniciar-sessio":"Login","tancar-sessio":"Logout"}');
 
 /***/ }),
 
@@ -1143,7 +1158,7 @@ module.exports = JSON.parse('{"inici":"Home","espais":"Spaces","ver":"View","ema
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"inici":"Inicio","espais":"Espacios","ver":"Ver","email":"Correo electronico","contrasenya":"Contraseña","iniciar-sessio":"Iniciar Sessión","tancar-sessio":"Cerrar Sessión"}');
+module.exports = JSON.parse('{"inici":"Inicio","espais":"Espacios","ver":"Ver","en":"en","tipus":"Tipo","comentaris":"Comentarios","email":"Correo electronico","contrasenya":"Contraseña","iniciar-sessio":"Iniciar Sessión","tancar-sessio":"Cerrar Sessión"}');
 
 /***/ })
 

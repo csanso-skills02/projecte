@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComentariController;
 use App\Http\Controllers\EspaiController;
 use App\Http\Controllers\IniciarSessioController;
 use App\Http\Controllers\IniciController;
@@ -41,3 +42,6 @@ Route::get('/espais/{registre}', [EspaiController::class, 'show'])
 
 Route::get('/lang-change', [LangController::class, 'change'])
     ->name('lang.change');
+
+Route::post('/comentari-afegir', [ComentariController::class, 'afegir'])
+    ->name('comentari.afegir');

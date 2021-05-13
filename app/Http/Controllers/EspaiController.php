@@ -38,6 +38,7 @@ class EspaiController extends Controller
         foreach ($espais as &$espai) {
             $lang = session()->get('lang', 'cat');
             $espai['desc'] = $espai['desc_' . $lang];
+            $espai['tipu']['nom'] = $espai['tipu'][$lang];
         }
 
         $municipis = Municipi::all()->toArray();

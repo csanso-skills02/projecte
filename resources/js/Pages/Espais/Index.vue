@@ -33,7 +33,10 @@
         <div class="right">
           <div class="group">
             <h2 class="title">{{ espai.nom }}</h2>
-            <p>{{ espai.municipi.nom }}</p>
+            <p>
+              {{ espai.tipu.nom }} <translation value="en" />
+              {{ espai.municipi.nom }}
+            </p>
           </div>
           <p>{{ espai.desc }}</p>
           <custom-link
