@@ -8,7 +8,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
 /* harmony import */ var vue_frag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-frag */ "./node_modules/vue-frag/dist/frag.esm.js");
 /* harmony import */ var vue_meta__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-meta */ "./node_modules/vue-meta/dist/vue-meta.esm.js");
 /* harmony import */ var portal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! portal-vue */ "./node_modules/portal-vue/dist/portal-vue.common.js");
@@ -17,8 +17,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var _inertiajs_progress__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/progress */ "./node_modules/@inertiajs/progress/dist/index.js");
 /* harmony import */ var _inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @inertiajs/inertia-vue */ "./node_modules/@inertiajs/inertia-vue/dist/index.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -29,16 +27,15 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-
-vue__WEBPACK_IMPORTED_MODULE_8__.default.prototype.$route = route;
-vue__WEBPACK_IMPORTED_MODULE_8__.default.use(vue_meta__WEBPACK_IMPORTED_MODULE_1__.default);
-vue__WEBPACK_IMPORTED_MODULE_8__.default.use(portal_vue__WEBPACK_IMPORTED_MODULE_2__.default);
-vue__WEBPACK_IMPORTED_MODULE_8__.default.use((v_click_outside__WEBPACK_IMPORTED_MODULE_3___default()));
-vue__WEBPACK_IMPORTED_MODULE_8__.default.use(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_6__.plugin);
-vue__WEBPACK_IMPORTED_MODULE_8__.default.directive("frag", vue_frag__WEBPACK_IMPORTED_MODULE_0__.default);
+vue__WEBPACK_IMPORTED_MODULE_7__.default.prototype.$route = route;
+vue__WEBPACK_IMPORTED_MODULE_7__.default.use(vue_meta__WEBPACK_IMPORTED_MODULE_1__.default);
+vue__WEBPACK_IMPORTED_MODULE_7__.default.use(portal_vue__WEBPACK_IMPORTED_MODULE_2__.default);
+vue__WEBPACK_IMPORTED_MODULE_7__.default.use((v_click_outside__WEBPACK_IMPORTED_MODULE_3___default()));
+vue__WEBPACK_IMPORTED_MODULE_7__.default.use(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_6__.plugin);
+vue__WEBPACK_IMPORTED_MODULE_7__.default.directive("frag", vue_frag__WEBPACK_IMPORTED_MODULE_0__.default);
 _inertiajs_progress__WEBPACK_IMPORTED_MODULE_5__.InertiaProgress.init();
 var el = document.getElementById("app");
-new vue__WEBPACK_IMPORTED_MODULE_8__.default({
+new vue__WEBPACK_IMPORTED_MODULE_7__.default({
   render: function render(h) {
     return h(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_6__.App, {
       props: {
@@ -58,20 +55,22 @@ new vue__WEBPACK_IMPORTED_MODULE_8__.default({
     uri: window.location.pathname
   },
   mounted: function mounted() {
-    // Inertia.on("finish", function(event) {
-    //   this.href = event.detail.visit.url?.href || window.location.href;
-    //   this.uri = event.detail.visit.url?.pathname || window.location.pathname;
-    // });
+    var _this = this;
+
+    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_4__.Inertia.on("navigate", function (event) {
+      _this.href = window.location.href;
+      _this.uri = window.location.pathname;
+    });
     document.addEventListener("resize", this.onResize);
   },
   beforeDestroy: function beforeDestroy() {
     document.removeEventListener("resize", this.onResize);
   },
   methods: {
-    onResize: (0,lodash__WEBPACK_IMPORTED_MODULE_7__.throttle)(function () {
+    onResize: function onResize() {
       this.width = window.innerWidth;
       this.height = window.innerHeight;
-    }, 100)
+    }
   }
 }).$mount(el);
 

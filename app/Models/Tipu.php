@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tipu extends Model
 {
-    use HasFactory;
+    // use HasFactory;
+
+    public $timestamps = false;
 }
