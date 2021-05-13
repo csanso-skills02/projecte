@@ -24,4 +24,9 @@ class Espai extends Model
     {
         return $this->hasMany(Exposicio::class);
     }
+
+    public function municipi()
+    {
+        return $this->belongsTo(Municipi::class);
+    }
 }

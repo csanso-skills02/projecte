@@ -36,7 +36,7 @@
 }
 body {
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 *,
@@ -53,6 +53,7 @@ h5,
 h6,
 p,
 a {
+  display: block;
   all: unset;
 }
 
@@ -69,6 +70,7 @@ a {
   --colors-4: #3e54a8;
   --colors-5: #639bd1;
   --colors-6: #f5f5f5;
+  --colors-7: #ccc;
   --colors-hover: #eaeaea;
 }
 header[data-v-6bf30086] {
@@ -104,4 +106,77 @@ header .left nav a[data-v-6bf30086] {
 }
 header .left nav a[data-v-6bf30086]:hover {
   background-color: var(--colors-hover);
+}
+.page[data-v-7f648856] {
+  width: 100%;
+  padding: 25px;
+}
+.page > .title[data-v-7f648856] {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: "Open Sans";
+  font-size: 1.3rem;
+}
+.espais[data-v-7f648856] {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+.espais article[data-v-7f648856] {
+  width: 60%;
+  box-shadow: 0 0 0 1px #ccc;
+  padding: 25px;
+  border-radius: 15px;
+}
+.espais article .right[data-v-7f648856] {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.espais article .right .group[data-v-7f648856] {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.espais article .right .title[data-v-7f648856] {
+  font-size: 1.2rem;
+}
+.button[data-v-7f648856] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: var(--colors-6);
+  border: 1px solid transparent;
+}
+.button[data-v-7f648856]:hover {
+  background-color: var(--colors-7);
+}
+.button[data-v-7f648856]:active, .button[data-v-7f648856]:focus {
+  border: 1px solid var(--colors-1);
+  box-shadow: 0 0 2px 1px var(--colors-3);
+}
+.page[data-v-6f5dd44a] {
+  width: 100%;
+  padding: 25px;
+}
+.page > .title[data-v-6f5dd44a] {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: "Open Sans";
+  font-size: 1.3rem;
+}
+.municipi[data-v-6f5dd44a] {
+  display: block;
+  text-align: center;
+}
+.desc[data-v-6f5dd44a] {
+  display: block;
+  margin-top: 45px;
 }

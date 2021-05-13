@@ -149,6 +149,18 @@ var map = {
 		"/js/vendor",
 		"resources_js_Pages_Espais_Index_vue"
 	],
+	"./Espais/Show": [
+		"./resources/js/Pages/Espais/Show.vue",
+		"css/app",
+		"/js/vendor",
+		"resources_js_Pages_Espais_Show_vue"
+	],
+	"./Espais/Show.vue": [
+		"./resources/js/Pages/Espais/Show.vue",
+		"css/app",
+		"/js/vendor",
+		"resources_js_Pages_Espais_Show_vue"
+	],
 	"./Inici/Index": [
 		"./resources/js/Pages/Inici/Index.vue",
 		"css/app",

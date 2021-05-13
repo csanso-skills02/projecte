@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 *,
@@ -19,6 +19,7 @@ h5,
 h6,
 p,
 a {
+  display: block;
   all: unset;
 }
 
@@ -35,6 +36,7 @@ a {
   --colors-4: #3e54a8;
   --colors-5: #639bd1;
   --colors-6: #f5f5f5;
+  --colors-7: #ccc;
 
   --colors-hover: #eaeaea;
 }

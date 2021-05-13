@@ -30,3 +30,6 @@ Route::get('/', [IniciController::class, 'index'])
 
 Route::get('/directori', [EspaiController::class, 'index'])
     ->name('directori');
+
+Route::get('/directori/{registre}', [EspaiController::class, 'show'])
+    ->name('directori.show');
