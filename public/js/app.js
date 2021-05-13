@@ -39,7 +39,7 @@ new vue__WEBPACK_IMPORTED_MODULE_6__.default({
       props: {
         initialPage: JSON.parse(el.dataset.page),
         resolveComponent: function resolveComponent(name) {
-          return Object(function webpackMissingModule() { var e = new Error("Cannot find module 'undefined'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()).then(function (module) {
+          return __webpack_require__("./resources/js/Pages lazy recursive ^\\.\\/.*$")("./".concat(name)).then(function (module) {
             return module["default"];
           });
         }
@@ -91,6 +91,44 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
+
+/***/ }),
+
+/***/ "./resources/js/Pages lazy recursive ^\\.\\/.*$":
+/*!************************************************************!*\
+  !*** ./resources/js/Pages/ lazy ^\.\/.*$ namespace object ***!
+  \************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var map = {
+	"./Auth/Iniciar": [
+		"./resources/js/Pages/Auth/Iniciar.vue",
+		"/js/vendor",
+		"resources_js_Pages_Auth_Iniciar_vue"
+	],
+	"./Auth/Iniciar.vue": [
+		"./resources/js/Pages/Auth/Iniciar.vue",
+		"/js/vendor",
+		"resources_js_Pages_Auth_Iniciar_vue"
+	]
+};
+function webpackAsyncContext(req) {
+	if(!__webpack_require__.o(map, req)) {
+		return Promise.resolve().then(() => {
+			var e = new Error("Cannot find module '" + req + "'");
+			e.code = 'MODULE_NOT_FOUND';
+			throw e;
+		});
+	}
+
+	var ids = map[req], id = ids[0];
+	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(() => {
+		return __webpack_require__(id);
+	});
+}
+webpackAsyncContext.keys = () => (Object.keys(map));
+webpackAsyncContext.id = "./resources/js/Pages lazy recursive ^\\.\\/.*$";
+module.exports = webpackAsyncContext;
 
 /***/ }),
 

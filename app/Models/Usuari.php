@@ -7,20 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class Usuari extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    // use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    public $timestamps = false;
+
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -28,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
+        'contrasenya',
         'remember_token',
     ];
 
@@ -38,6 +31,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        // 'email_verified_at' => 'datetime',
     ];
+
+    public function getRememberTokenName(){
+        return 'recorda_token';
+    }
+
+    public function getAuthPassword(){
+        return $this->contrasenya;
+    }
 }
