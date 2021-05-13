@@ -2,6 +2,21 @@
   <article class="page">
     <h1 class="title">Espais</h1>
 
+    <div class="filters">
+      <select v-model="form.municipi_id">
+        <option value=""></option>
+        <option
+          v-for="municipi in municipis"
+          :key="municipi.id"
+          :value="municipi.id"
+        >
+          {{ municipi.nom }}
+        </option>
+      </select>
+
+      <input type="text" v-model="form.search" />
+    </div>
+
     <div class="espais">
       <article v-for="espai in espais" :key="espai.id">
         <div class="left"></div>
@@ -14,7 +29,7 @@
           <p>{{ espai.desc_cat }}</p>
           <custom-link
             class="button"
-            :href="$route('directori.show', { registre: espai.registre })"
+            :href="$route('espais.show', { registre: espai.registre })"
           >
             Accedir
           </custom-link>
@@ -27,11 +42,40 @@
 <script>
 import CustomLink from "../../Shared/CustomLink.vue";
 import Layout from "../../Shared/Layout";
+import pickBy from "lodash/pickBy";
 
 export default {
   components: { CustomLink },
-  props: ["espais"],
+  props: ["espais", "query"],
   layout: Layout,
+  data() {
+    return {
+      form: {
+        search: this.query.search,
+        municipi_id: this.query.municipi_id,
+      },
+    };
+  },
+  computed: {
+    municipis() {
+      return this.$page.props.municipis;
+    },
+  },
+  watch: {
+    form: {
+      deep: true,
+      handler() {
+        this.refreshList();
+      },
+    },
+  },
+  methods: {
+    refreshList() {
+      this.$inertia.get(this.$route("espais.index"), pickBy(this.form), {
+        preserveState: true,
+      });
+    },
+  },
 };
 </script>
 
@@ -47,6 +91,13 @@ export default {
   text-align: center;
   font-size: "Open Sans";
   font-size: 1.3rem;
+}
+
+.filters {
+  margin-top: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .espais {

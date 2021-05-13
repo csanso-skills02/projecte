@@ -1,8 +1,10 @@
 <template>
   <article class="page">
-    <h1 class="title">{{ nom }}</h1>
-    <p class="municipi">{{ municipi }}</p>
-    <p class="desc">{{ desc_cat }}</p>
+    <div class="inner">
+      <h1 class="page-title">{{ nom }}</h1>
+      <p class="municipi">{{ municipi }}</p>
+      <p class="desc">{{ desc_cat }}</p>
+    </div>
   </article>
 </template>
 
@@ -32,11 +34,21 @@ export default {
 .page {
   width: 100%;
   padding: 25px;
+  display: flex;
+  justify-content: center;
 }
 
-.page > .title {
+.inner {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-title {
   display: block;
   width: 100%;
+  margin-bottom: 10px;
   text-align: center;
   font-size: "Open Sans";
   font-size: 1.3rem;

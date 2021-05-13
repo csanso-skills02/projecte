@@ -25,11 +25,15 @@ Route::post('/iniciar', [IniciarSessioController::class, 'intent'])
     ->name('login.intent')
     ->middleware('guest');
 
+Route::get('/logout', [IniciarSessioController::class, 'logout'])
+    ->name('logout')
+    ->middleware('auth');
+
 Route::get('/', [IniciController::class, 'index'])
     ->name('home');
 
-Route::get('/directori', [EspaiController::class, 'index'])
-    ->name('directori');
+Route::get('/espais', [EspaiController::class, 'index'])
+    ->name('espais.index');
 
-Route::get('/directori/{registre}', [EspaiController::class, 'show'])
-    ->name('directori.show');
+Route::get('/espais/{registre}', [EspaiController::class, 'show'])
+    ->name('espais.show');

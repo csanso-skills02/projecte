@@ -7,21 +7,34 @@
         </div>
         <nav>
           <custom-link :href="$route('home')">Inici</custom-link>
-          <custom-link :href="$route('directori')">Directori</custom-link>
+          <custom-link :href="$route('espais.index')">Espais</custom-link>
         </nav>
       </div>
-      <div class="right"></div>
+      <div class="right">
+        <div class="userInfo" v-if="$page.props.user">
+          {{ $page.props.user.nom }}
+        </div>
+        <custom-link :href="$route('login')" v-if="!$page.props.user">
+          Iniciar Sessió
+        </custom-link>
+        <custom-link :href="$route('logout')" v-else>
+          Tancar Sessió
+        </custom-link>
+      </div>
     </header>
+    <flash-message />
     <slot />
   </div>
 </template>
 
 <script>
 import CustomLink from "../Shared/CustomLink.vue";
+import FlashMessage from "./FlashMessage.vue";
 
 export default {
   components: {
     CustomLink,
+    FlashMessage,
   },
 };
 </script>

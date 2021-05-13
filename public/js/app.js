@@ -129,11 +129,13 @@ __webpack_require__.r(__webpack_exports__);
 var map = {
 	"./Auth/Iniciar": [
 		"./resources/js/Pages/Auth/Iniciar.vue",
+		"css/app",
 		"/js/vendor",
 		"resources_js_Pages_Auth_Iniciar_vue"
 	],
 	"./Auth/Iniciar.vue": [
 		"./resources/js/Pages/Auth/Iniciar.vue",
+		"css/app",
 		"/js/vendor",
 		"resources_js_Pages_Auth_Iniciar_vue"
 	],
