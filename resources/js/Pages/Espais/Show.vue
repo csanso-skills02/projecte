@@ -1,9 +1,13 @@
 <template>
   <article class="page">
-    <div class="inner">
+    <div class="left">
+      <img :src="imatge" alt="" />
+    </div>
+
+    <div class="right">
       <h1 class="page-title">{{ nom }}</h1>
-      <p class="municipi">{{ municipi }}</p>
-      <p class="desc">{{ desc_cat }}</p>
+      <p class="info">{{ tipu }} en {{ municipi }}</p>
+      <p class="desc">{{ desc }}</p>
     </div>
   </article>
 </template>
@@ -23,8 +27,14 @@ export default {
     municipi() {
       return this.$page.props.item?.municipi?.nom || "";
     },
-    desc_cat() {
-      return this.$page.props.item?.desc_cat || "";
+    tipu() {
+      return this.$page.props.item?.tipu?.nom || "";
+    },
+    desc() {
+      return this.$page.props.item?.desc || "";
+    },
+    imatge() {
+      return this.espai.imatges[0].imatge;
     },
   },
 };
@@ -36,27 +46,35 @@ export default {
   padding: 25px;
   display: flex;
   justify-content: center;
+  gap: 25px;
+  margin-top: 25px;
 }
 
-.inner {
+.left {
+  width: 500px;
+}
+
+.right {
+  width: 500px;
+}
+
+img {
   width: 100%;
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
+  height: 100%;
+  object-fit: contain;
 }
 
 .page-title {
   display: block;
   width: 100%;
-  margin-bottom: 10px;
-  text-align: center;
   font-size: "Open Sans";
   font-size: 1.3rem;
+  margin-bottom: 10px;
 }
 
-.municipi {
+.info {
+  margin: 2px 0;
   display: block;
-  text-align: center;
 }
 
 .desc {

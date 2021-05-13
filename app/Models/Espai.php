@@ -29,4 +29,14 @@ class Espai extends Model
     {
         return $this->belongsTo(Municipi::class);
     }
+
+    public function tipu()
+    {
+        return $this->belongsTo(Tipu::class);
+    }
+
+    public function imatges()
+    {
+        return $this->hasMany(EspaiImatge::class);
+    }
 }

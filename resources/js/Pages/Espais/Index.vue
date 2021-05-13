@@ -1,6 +1,8 @@
 <template>
   <article class="page">
-    <h1 class="title">Espais</h1>
+    <h1 class="title">
+      <translation value="espais" />
+    </h1>
 
     <div class="filters">
       <select v-model="form.municipi_id">
@@ -26,12 +28,12 @@
             <h2 class="title">{{ espai.nom }}</h2>
             <p>{{ espai.municipi.nom }}</p>
           </div>
-          <p>{{ espai.desc_cat }}</p>
+          <p>{{ espai.desc }}</p>
           <custom-link
             class="button"
             :href="$route('espais.show', { registre: espai.registre })"
           >
-            Accedir
+            <translation value="ver" />
           </custom-link>
         </div>
       </article>
@@ -40,12 +42,16 @@
 </template>
 
 <script>
+import Translation from "../../Shared/Translation.vue";
 import CustomLink from "../../Shared/CustomLink.vue";
 import Layout from "../../Shared/Layout";
 import pickBy from "lodash/pickBy";
 
 export default {
-  components: { CustomLink },
+  components: {
+    Translation,
+    CustomLink,
+  },
   props: ["espais", "query"],
   layout: Layout,
   data() {
@@ -59,6 +65,9 @@ export default {
   computed: {
     municipis() {
       return this.$page.props.municipis;
+    },
+    lang() {
+      return this.$page.props.lang || "";
     },
   },
   watch: {
@@ -74,6 +83,11 @@ export default {
       this.$inertia.get(this.$route("espais.index"), pickBy(this.form), {
         preserveState: true,
       });
+    },
+  },
+  filters: {
+    descripcio(item, lang) {
+      return item["desc_" + lang];
     },
   },
 };

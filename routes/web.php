@@ -3,6 +3,7 @@
 use App\Http\Controllers\EspaiController;
 use App\Http\Controllers\IniciarSessioController;
 use App\Http\Controllers\IniciController;
+use App\Http\Controllers\LangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,3 +38,6 @@ Route::get('/espais', [EspaiController::class, 'index'])
 
 Route::get('/espais/{registre}', [EspaiController::class, 'show'])
     ->name('espais.show');
+
+Route::get('/lang-change', [LangController::class, 'change'])
+    ->name('lang.change');

@@ -6,19 +6,32 @@
           <img :src="require('@/assets/logo.png').default" alt="logo" />
         </div>
         <nav>
-          <custom-link :href="$route('home')">Inici</custom-link>
-          <custom-link :href="$route('espais.index')">Espais</custom-link>
+          <custom-link :href="$route('home')">
+            <translation value="inici" />
+          </custom-link>
+          <custom-link :href="$route('espais.index')">
+            <translation value="espais" />
+          </custom-link>
+          <custom-link :href="$route('lang.change', { abbr: 'eng' })">
+            English
+          </custom-link>
+          <custom-link :href="$route('lang.change', { abbr: 'cat' })">
+            Catala
+          </custom-link>
+          <custom-link :href="$route('lang.change', { abbr: 'esp' })">
+            Espanyol
+          </custom-link>
         </nav>
       </div>
       <div class="right">
         <div class="userInfo" v-if="$page.props.user">
-          {{ $page.props.user.nom }}
+          {{ $page.props.user.nom }} {{ $page.props.user.llinatges }}
         </div>
         <custom-link :href="$route('login')" v-if="!$page.props.user">
-          Iniciar Sessió
+          <translation value="iniciar-sessio" />
         </custom-link>
         <custom-link :href="$route('logout')" v-else>
-          Tancar Sessió
+          <translation value="tancar-sessio" />
         </custom-link>
       </div>
     </header>
@@ -28,11 +41,13 @@
 </template>
 
 <script>
+import Translation from "../Shared/Translation.vue";
 import CustomLink from "../Shared/CustomLink.vue";
 import FlashMessage from "./FlashMessage.vue";
 
 export default {
   components: {
+    Translation,
     CustomLink,
     FlashMessage,
   },
@@ -77,5 +92,10 @@ header .left {
       }
     }
   }
+}
+
+header .right {
+  display: flex;
+  gap: 20px;
 }
 </style>

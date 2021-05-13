@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="inner">
-      <h1>Iniciar Sessió</h1>
+      <h1><translation value="iniciar-sessio" /></h1>
 
       <form @submit.prevent="submit">
         <div class="input-group">
@@ -9,23 +9,27 @@
           <input type="text" id="login-email" v-model="form.email" />
         </div>
         <div class="input-group">
-          <label for="login-contrasenya">Contrasenya</label>
+          <label for="login-contrasenya"
+            ><translation value="contrasenya"
+          /></label>
           <input
             type="password"
             id="login-contrasenya"
             v-model="form.contrasenya"
           />
         </div>
-        <button type="submit">Iniciar Sessió</button>
+        <button type="submit"><translation value="iniciar-sessio" /></button>
       </form>
     </div>
   </div>
 </template>
 
 <script>
+import Translation from "../../Shared/Translation.vue";
 import Layout from "../../Shared/Layout.vue";
 
 export default {
+  components: { Translation },
   layout: Layout,
   data() {
     return {
