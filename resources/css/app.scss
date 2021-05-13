@@ -1,0 +1,40 @@
+@import "fonts";
+
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  all: unset;
+}
+
+a {
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+:root {
+  --colors-1: #5830a2;
+  --colors-2: #6631a3;
+  --colors-3: #ab41ac;
+  --colors-4: #3e54a8;
+  --colors-5: #639bd1;
+  --colors-6: #f5f5f5;
+
+  --colors-hover: #eaeaea;
+}

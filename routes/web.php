@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EspaiController;
 use App\Http\Controllers\IniciarSessioController;
 use App\Http\Controllers\IniciController;
 use Illuminate\Support\Facades\Route;
@@ -15,8 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [IniciController::class, 'index'])
-    ->name('home');
 
 Route::get('/iniciar', [IniciarSessioController::class, 'mostrarLogin'])
     ->name('login')
@@ -25,3 +24,9 @@ Route::get('/iniciar', [IniciarSessioController::class, 'mostrarLogin'])
 Route::post('/iniciar', [IniciarSessioController::class, 'intent'])
     ->name('login.intent')
     ->middleware('guest');
+
+Route::get('/', [IniciController::class, 'index'])
+    ->name('home');
+
+Route::get('/directori', [EspaiController::class, 'index'])
+    ->name('directori');
